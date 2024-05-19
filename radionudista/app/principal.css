@@ -1,0 +1,20 @@
+
+.loading{
+    animation: 2s linear infinite running load;
+}
+
+.loader{
+    width: 8svw;
+    height: 8svw;
+}
+
+@keyframes load {
+    from {
+      /* pushes the sun down past the viewport */
+      transform: rotate(0deg);
+    }
+    to {
+      /* returns the sun to its default position */
+      transform: rotate(360deg);
+    }
+}
