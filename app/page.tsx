@@ -1,19 +1,8 @@
 'use client'
-import {useEffect, useRef, useState} from 'react'
-import { 
-  MdOutlinePauseCircle, 
-  MdOutlinePlayCircle, 
-  MdNoAdultContent, 
-  MdOutlineMotionPhotosOn,
-} from "react-icons/md";
-import Loader from './ui/components/Loader'
+import {useRef} from 'react'
 import Reproductor from './ui/section/Reproductor';
 import Image from 'next/image';
 import cover from '@/public/images/cover-alt-white.png'
-
-interface Stream{
-  streamTitle?:string
-}
 
 export default function Home() {
 

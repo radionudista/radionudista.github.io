@@ -8,6 +8,11 @@
     height: 8svw;
 }
 
+.icon:hover{
+  transform: scale(1.3);
+  transition: all 0.1s ease-out;
+}
+
 @keyframes load {
     from {
       /* pushes the sun down past the viewport */

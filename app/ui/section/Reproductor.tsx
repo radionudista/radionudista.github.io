@@ -1,14 +1,7 @@
 'use client'
 import {useEffect, useRef, useState} from 'react'
-import { 
-  MdOutlinePauseCircle, 
-  MdOutlinePlayCircle,
-  MdPlayArrow
-} from "react-icons/md";
 import { TfiControlPause, TfiControlPlay } from "react-icons/tfi";
 import Loader from '@/app/ui/components/Loader'
-import Image from 'next/image';
-import portada from '@/public/images/cover-alt.png'
 
 
 interface Reproductor{
@@ -25,6 +18,7 @@ export default function Reproductor({urlRadio,urlStream}:Reproductor){
     const audioRef:any = useRef(null)
     const defaultTitle:any = useRef('radionudista')
 
+    const [stream,setStream] = useState<string>('');
     const [play,setPlay] = useState<boolean>(false) //Estado de reproduccion (PLAY/PAUSE)
     const [radio,setRadio] = useState<Stream>({}) //Infomacion reproductor {streamTitle}
     const [title,setTitle] = useState<string>('') //Titulo de la pagina
@@ -32,6 +26,8 @@ export default function Reproductor({urlRadio,urlStream}:Reproductor){
 
     //Efecto unico y primero del componente
     useEffect(()=>{
+
+        setStream(urlRadio)
 
         const eventSource = urlStream ? new EventSource(urlStream) : null;
 
@@ -117,7 +113,7 @@ export default function Reproductor({urlRadio,urlStream}:Reproductor){
     return (
         <div>
             <audio ref={audioRef}>
-                <source src={urlRadio} type="audio/mpeg"/>
+                <source src={stream} type="audio/mpeg"/>
                 Your browser does not support the audio element.
             </audio>
             <section className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col items-center">
