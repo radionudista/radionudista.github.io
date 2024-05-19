@@ -4,10 +4,12 @@ import {
   MdOutlinePauseCircle, 
   MdOutlinePlayCircle, 
   MdNoAdultContent, 
-  MdOutlineMotionPhotosOn 
+  MdOutlineMotionPhotosOn,
 } from "react-icons/md";
 import Loader from './ui/components/Loader'
 import Reproductor from './ui/section/Reproductor';
+import Image from 'next/image';
+import cover from '@/public/images/cover-alt-white.png'
 
 interface Stream{
   streamTitle?:string
@@ -20,10 +22,13 @@ export default function Home() {
 
   return (
     
-    <main className="flex flex-col h-[95svh] z-[100] text-[#000000]">
+    <main className="flex flex-col sm:h-[90svh] h-[85svh] z-[100] text-[#FFFFFF]">
       <nav className="px-[10px] py-[5px]">
         <div>
-          <h1 className="sm:text-[5.5vw] text-[10vw] font-[800] ml-[1svw] flex items-center">radio nudista <MdNoAdultContent style={{display:"inline",marginLeft:20}}/></h1>
+          <h1 className="sm:text-[3.5vw] text-[8vw] font-[200] ml-[1svw] flex items-center">radio
+            <span className='font-[800]'>nudista</span>
+            <Image src={cover} alt={'cover'} className='sm:w-[3.5vw] w-[6vw] sm:h-[3.5vw] h-[6vw] ml-[10px]' />
+          </h1>
         </div>
       </nav>
       

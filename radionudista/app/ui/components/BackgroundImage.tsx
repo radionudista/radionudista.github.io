@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import tvbg from '@/public/images/whiteNoise.jpg'
+import tvbg from '@/public/images/VHS01.jpg'
  
 export default function BackgroundImage() {
   return (

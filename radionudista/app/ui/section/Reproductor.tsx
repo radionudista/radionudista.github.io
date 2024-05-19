@@ -2,8 +2,10 @@
 import {useEffect, useRef, useState} from 'react'
 import { 
   MdOutlinePauseCircle, 
-  MdOutlinePlayCircle
+  MdOutlinePlayCircle,
+  MdPlayArrow
 } from "react-icons/md";
+import { TfiControlPause, TfiControlPlay } from "react-icons/tfi";
 import Loader from '@/app/ui/components/Loader'
 import Image from 'next/image';
 import portada from '@/public/images/cover-alt.png'
@@ -40,6 +42,7 @@ export default function Reproductor({urlRadio,urlStream}:Reproductor){
             setRadio(p=>({...p,streamTitle:data.streamTitle}))
             setTitle(data.streamTitle)
         } :  null;
+
         //Handle Error del reproductor
         const handleError = (event:EventTarget)=>{
             console.log('STREAM ERROR:',event)
@@ -70,7 +73,7 @@ export default function Reproductor({urlRadio,urlStream}:Reproductor){
             artist: "@radionudista",
             artwork: [
             {
-                src: "/images/1.png",
+                src: "/images/cover.jpg",
                 sizes: "150x150",
                 type: "image/png",
             }
@@ -93,7 +96,7 @@ export default function Reproductor({urlRadio,urlStream}:Reproductor){
             artist: "@radionudista",
             artwork: [
             {
-                src: "/images/1.png",
+                src: "/images/cover.jpg",
                 sizes: "150x150",
                 type: "image/png",
             }
@@ -118,13 +121,13 @@ export default function Reproductor({urlRadio,urlStream}:Reproductor){
                 Your browser does not support the audio element.
             </audio>
             <section className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col items-center">
-                <Image alt="portada" src={portada} style={{height: '20svw',width:'20svw',maxHeight:'150px',maxWidth:'150px',marginBottom:'2svh'}}/>
-                <p className="sm:text-[3.3vw] text-[6vw] font-[800] min-h-[10svw] w-[80svw] text-center mb-[2svh]">{radio.streamTitle ? radio.streamTitle : null}</p>
+                {/*<Image alt="portada" src={portada} style={{height: '20svw',width:'20svw',maxHeight:'150px',maxWidth:'150px',marginBottom:'2svh'}}/>*/}
+                <p className="sm:text-[2vw] text-[5svw] font-[400] min-h-[6svw] w-[80svw] text-center mb-[1svh]">{radio.streamTitle ? radio.streamTitle : null}</p>
                 <button onClick={HandlePlayRadio}>
                     {!play ? 
-                        <MdOutlinePlayCircle className="sm:text-[8vw] text-[15vw]" style={{display:"inline"}}/>
+                        <TfiControlPlay className="sm:text-[5vw] text-[15vw]" style={{display:"inline"}}/>
                         : 
-                        (!load ? <MdOutlinePauseCircle className="sm:text-[8vw] text-[15vw]" style={{display:"inline"}}/> : null)
+                        (!load ? <TfiControlPause className="sm:text-[5vw] text-[15vw]" style={{display:"inline"}}/> : null)
                     }
                 </button>
                 {load && < Loader />}

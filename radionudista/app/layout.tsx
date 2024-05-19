@@ -7,7 +7,8 @@ import Footer from '@/app/ui/section/Footer'
 
 
 const inter = Inter({ subsets: ["latin"] });
-const archivo =  Archivo({subsets: ["latin"]})
+const archivo =  Archivo({subsets: ["latin"]});
+
 //const whiteNOise = '/images/whiteNoise.jpg'
 /*const bkgBody = {
   backgroundImage:`url(${whiteNOise})`,

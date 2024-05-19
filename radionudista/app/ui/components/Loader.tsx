@@ -1,6 +1,6 @@
 export default function Loader() {
 
-    const color = '#000000'
+    const color = '#FFFFFF'
 
     return (
         <div className="sm:w-[8svw] w-[15svw] sm:h-[8svw] h-[15svw]">
