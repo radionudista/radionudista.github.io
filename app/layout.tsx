@@ -13,6 +13,10 @@ const archivo =  Archivo({subsets: ["latin"]});
 export const metadata: Metadata = {
   title: "radionudista",
   description: "Club social experimental para personas honestas, inclusivas, curiosas y apasionadas.",
+  metadataBase: new URL('https://radionudista.com'),
+  openGraph: {
+    images: '/images/cover.jpg',
+  }
 };
 
 const img = [
