@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import {useRef} from 'react'
 import Image from 'next/image'
 import cover from '@/public/images/cover-alt-white.png'

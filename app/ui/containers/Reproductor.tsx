@@ -60,7 +60,6 @@ export default function Reproductor({urlRadio,urlStream,visibility}:Reproductor)
 
         return () => {
             if(eventSource) eventSource.close();
-            console.log('audioRef.current:',audio)
             audio.removeEventListener('error',handleError);
             audio.removeEventListener('playing',()=>setLoad(false));
 
