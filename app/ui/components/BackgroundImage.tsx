@@ -13,13 +13,15 @@ import VHS10 from '@/public/background/VHS10.jpg'
 
 
 interface BackgroundImage{
-  background:number
+  background?:number
 }
  
 export default function BackgroundImage({background}:BackgroundImage) {
 
   let bg;
-  switch(background){
+  const randomImg:number = Math.floor(Math.random()*10)
+
+  switch(randomImg){
     case 0:
       bg = VHS01;
       break;
@@ -53,6 +55,7 @@ export default function BackgroundImage({background}:BackgroundImage) {
   }
 
   console.log('background:',background)
+  console.log('randomImg:',randomImg)
   console.log('bg:',bg)
 
   return (
