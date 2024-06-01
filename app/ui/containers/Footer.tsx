@@ -7,8 +7,9 @@ export default function Footer(){
     const [movil,setMovil] = useState<boolean>(isMobile())
 
     function isMobile():boolean {
-        const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-        return regex.test(navigator.userAgent);
+        //const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+        //return regex.test(navigator.userAgent);
+        return window.innerWidth <= 800 
     }
     
     
