@@ -26,26 +26,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const img = [
-    'VHS01.jpg',
-    'VHS02.jpg',
-    'VHS03.jpg',
-    'VHS04.jpg',
-    'VHS05.jpg',
-    'VHS06.jpg',
-    'VHS07.jpg',
-    'VHS08.jpg',
-    'VHS09.jpg',
-    'VHS10.jpg',
-  ]
-  
-  const randomImg:number = Math.floor(Math.random()*10)
-
   return (
     <html lang="en">
       <body className={`${archivo.className} relative min-h-svh`} style={{backgroundColor:'#4e4e4e'}}>
         <Header/>
-        <BackgroundImage background={randomImg}/>
+        <BackgroundImage/>
         {children}
         <Footer/>
       </body>
