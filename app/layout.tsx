@@ -39,8 +39,7 @@ export default function RootLayout({
     'VHS10.jpg',
   ]
   
-  const randomImg:string = img[Math.floor(Math.random()*10)]
-  console.log('randomImg:',randomImg)
+  const randomImg:number = Math.floor(Math.random()*10)
 
   return (
     <html lang="en">
