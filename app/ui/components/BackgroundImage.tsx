@@ -1,12 +1,17 @@
+'use client'
 import Image from 'next/image'
-import tvbg from '@/public/images/VHS01.jpg'
+
+interface BackgroundImage{
+  background:string
+}
  
-export default function BackgroundImage() {
+export default function BackgroundImage({background}:BackgroundImage) {
+
   return (
     <Image
       alt="radionudista"
-      src={tvbg}
-      placeholder="blur"
+      src={`/background/${background}`}
+      placeholder="empty"
       quality={100}
       fill
       sizes="100vw"
