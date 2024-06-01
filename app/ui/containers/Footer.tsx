@@ -1,17 +1,18 @@
 'use client'
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 import { AiOutlineX, AiOutlineInstagram, AiOutlineDiscord } from "react-icons/ai";
 
 export default function Footer(){
 
-    const [movil,setMovil] = useState<boolean>(isMobile())
+    const [movil,setMovil] = useState<boolean>(false)
 
-    function isMobile():boolean {
-        //const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-        //return regex.test(navigator.userAgent);
-        return window.innerWidth <= 800 
-    }
-    
+    useEffect(()=>{
+        function isMobile():void {
+            const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+            setMovil(regex.test(navigator.userAgent));
+        }
+        isMobile()
+    },[])
     
     return (
         <footer className="sm:h-[10svh] h-[15svh] flex justify-center items-center">
