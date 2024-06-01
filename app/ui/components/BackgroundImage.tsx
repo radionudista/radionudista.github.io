@@ -6,7 +6,7 @@ interface BackgroundImage{
 }
  
 export default function BackgroundImage({background}:BackgroundImage) {
-
+  console.log('background:',background)
   return (
     <Image
       alt="radionudista"

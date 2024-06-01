@@ -19,24 +19,26 @@ export const metadata: Metadata = {
   }
 };
 
-const img = [
-  'VHS01.jpg',
-  'VHS02.jpg',
-  'VHS03.jpg',
-  'VHS04.jpg',
-  'VHS05.jpg',
-  'VHS06.jpg',
-  'VHS07.jpg',
-  'VHS08.jpg',
-  'VHS09.jpg',
-  'VHS10.jpg',
-]
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const img = [
+    'VHS01.jpg',
+    'VHS02.jpg',
+    'VHS03.jpg',
+    'VHS04.jpg',
+    'VHS05.jpg',
+    'VHS06.jpg',
+    'VHS07.jpg',
+    'VHS08.jpg',
+    'VHS09.jpg',
+    'VHS10.jpg',
+  ]
+  
   return (
     <html lang="en">
       <body className={`${archivo.className} relative min-h-svh`} style={{backgroundColor:'#4e4e4e'}}>
