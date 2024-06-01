@@ -39,11 +39,14 @@ export default function RootLayout({
     'VHS10.jpg',
   ]
   
+  const randomImg:string = img[Math.floor(Math.random()*10)]
+  console.log('randomImg:',randomImg)
+
   return (
     <html lang="en">
       <body className={`${archivo.className} relative min-h-svh`} style={{backgroundColor:'#4e4e4e'}}>
         <Header/>
-        <BackgroundImage background={img[Math.floor(Math.random()*10)]}/>
+        <BackgroundImage background={randomImg}/>
         {children}
         <Footer/>
       </body>
