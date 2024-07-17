@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Archivo } from "next/font/google";
 import "./globals.css";
-import "@/app/principal.css";
 import BackgroundImage from '@/app/ui/components/BackgroundImage'
 import Footer from '@/app/ui/containers/Footer'
 import Header from '@/app/ui/containers/Header'

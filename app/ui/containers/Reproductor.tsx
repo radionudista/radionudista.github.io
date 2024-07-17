@@ -7,7 +7,8 @@ import Loader from '@/app/ui/components/Loader'
 interface Reproductor{
     urlRadio:string,
     urlStream?:string,
-    visibility:boolean
+    visibility:boolean,
+    volume?:number
 }
 
 interface Stream{
@@ -19,7 +20,7 @@ interface Stream{
 -urlRadio: stream de audio
 -urlStream: listener informacion de stream de audio
 */
-export default function Reproductor({urlRadio,urlStream,visibility}:Reproductor){
+export default function Reproductor({urlRadio,urlStream,visibility,volume}:Reproductor){
 
     const audioRef:any = useRef(null)
     const defaultTitle:any = useRef('radionudista')
@@ -34,6 +35,9 @@ export default function Reproductor({urlRadio,urlStream,visibility}:Reproductor)
     useEffect(()=>{
         //ref audio tag
         const audio = audioRef.current
+
+        //Asigna valor
+        audio.volume = volume;
 
         setStream(urlRadio)
 
@@ -87,9 +91,22 @@ export default function Reproductor({urlRadio,urlStream,visibility}:Reproductor)
         } 
     },[title])
     
+    //Efecto cambio volumen
+    useEffect(()=>{
+
+        if(volume != undefined){
+            volume > 0 ? audioRef.current.volume = volume : audioRef.current.volume = 0.0
+        }
+
+        console.log('volume_act:',audioRef.current.volume)
+
+    },[volume])
+
     //Handle play de la transmision
     const HandlePlayRadio=():void=>{
         
+        console.log('volumen:',audioRef.current.volume)
+
         if(!play){
         //PLAY
         setLoad(true)

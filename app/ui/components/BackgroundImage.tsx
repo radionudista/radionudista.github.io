@@ -19,47 +19,49 @@ interface BackgroundImage{
  
 export default function BackgroundImage({background}:BackgroundImage) {
 
-  const [bg,setBg] = useState<StaticImageData|null>()
+  /*const [bg,setBg] = useState<StaticImageData|null>()
   
   useEffect(()=>{
     const randomImg:number = Math.floor(Math.random()*10)
-    console.log(typeof VHS01)
+    let background;
+
     switch(randomImg){
       case 0:
-        setBg(VHS01);
+        background = VHS01;
         break;
       case 1:
-        setBg(VHS02);
+        background = VHS02;
         break;
       case 2:
-        setBg(VHS03);
+        background = VHS03;
         break;
       case 3:
-        setBg(VHS04);
+        background = VHS04;
         break;
       case 4:
-        setBg(VHS05);
+        background = VHS05;
         break;
       case 5:
-        setBg(VHS06);
+        background = VHS06;
         break;
       case 6:
-        setBg(VHS07);
+        background = VHS07;
         break;
       case 7:
-        setBg(VHS08);
+        background = VHS08;
         break
       case 8:
-        setBg(VHS09);
+        background = VHS09;
         break;
       default:
-        setBg(VHS10);
+        background = VHS10;
         break;
     }
 
     console.log('background:',background)
     console.log('randomImg:',randomImg)
-    console.log('bg:',bg)
+    console.log('bg:',background)
+    setBg(background)
   },[])
 
   
@@ -80,5 +82,19 @@ export default function BackgroundImage({background}:BackgroundImage) {
         }}
       />}
     </>
-  )
+  )*/
+
+  return(<Image
+    alt="radionudista"
+    src={VHS01}
+    placeholder="empty"
+    quality={100}
+    fill
+    sizes="100vw"
+    style={{
+      objectFit: 'cover',
+      zIndex:"-1",
+      opacity:0.6
+    }}
+  />)
 }
