@@ -86,7 +86,7 @@ export default function BackgroundImage({background}:BackgroundImage) {
 
   return(<Image
     alt="radionudista"
-    src={VHS01}
+    src={VHS04}
     placeholder="empty"
     quality={100}
     fill
