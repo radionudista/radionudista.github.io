@@ -16,14 +16,13 @@ export default function Header() {
     const pathname = usePathname()
 
     const urlRadio = useRef('https://servidor30.brlogic.com:7024/live')
-    const urlStream = useRef('https://api.zeno.fm/mounts/metadata/subscribe/8a1hsarfnpxuv')
+    //const urlStream = useRef('https://api.zeno.fm/mounts/metadata/subscribe/8a1hsarfnpxuv')
 
     return(
         <>
             <Navbar setVolume={setVolume} volume={volume}/>
             <Reproductor 
                 urlRadio={urlRadio.current} 
-                urlStream={urlStream.current}
                 visibility={pathname == '/'}
                 volume={volume}
             />

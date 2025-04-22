@@ -19,7 +19,7 @@ interface BackgroundImage{
  
 export default function BackgroundImage({background}:BackgroundImage) {
 
-  /*const [bg,setBg] = useState<StaticImageData|null>()
+  const [bg,setBg] = useState<StaticImageData|null>()
   
   useEffect(()=>{
     const randomImg:number = Math.floor(Math.random()*10)
@@ -75,26 +75,13 @@ export default function BackgroundImage({background}:BackgroundImage) {
         quality={100}
         fill
         sizes="100vw"
+        className='fade-in'
         style={{
           objectFit: 'cover',
-          zIndex:"-1",
-          opacity:0.6
+          zIndex:"-1"
         }}
       />}
     </>
-  )*/
+  )
 
-  return(<Image
-    alt="radionudista"
-    src={VHS04}
-    placeholder="empty"
-    quality={100}
-    fill
-    sizes="100vw"
-    style={{
-      objectFit: 'cover',
-      zIndex:"-1",
-      opacity:0.6
-    }}
-  />)
 }

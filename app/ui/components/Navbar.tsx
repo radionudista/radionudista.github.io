@@ -26,7 +26,7 @@ export default function Navbar({volume,setVolume}:Navbar) {
     const [movil,setMovil] = useState<boolean | undefined>(undefined)
 
     useEffect(()=>{
-        setMovil(isMobile)
+        setMovil(isMobile())
     },[])
 
     useEffect(() => {
@@ -61,10 +61,19 @@ export default function Navbar({volume,setVolume}:Navbar) {
         <nav className="flex justify-between items-center px-[10px] py-[5px] sm:h-[10svh] h-[15svh] w-full text-[#FFFFFF]">
             <div>
                 <Link href={'/'}>
-                    <h1 className="sm:text-[3.5vw] text-[8vw] font-[200] ml-[1svw] flex items-center">radio
-                        <span className='font-[800]'>nudista</span>
-                        <Image src={cover} alt={'cover'} className='sm:w-[3.5vw] w-[6vw] sm:h-[3.5vw] h-[6vw] ml-[10px]' />
-                    </h1>
+                    <div className='relative flex items-center'>
+                        <h1 className="sm:text-[3.5vw] text-[8vw] font-[200] ml-[1svw] flex items-center">radio
+                            <span className='font-[800]'>nudista</span>
+                        </h1>
+                        <div className='relative sm:w-[3.5vw] w-[6vw] sm:h-[3.5vw] h-[6vw] ml-[10px]'>
+                            <Image 
+                                src={cover} 
+                                alt={'cover'} 
+                                fill
+                                priority
+                        />
+                        </div>
+                    </div>
                 </Link>
             </div>
             <div className='mr-[1.5svw] flex flex-row'>

@@ -27,7 +27,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${archivo.className} relative min-h-svh`} style={{backgroundColor:'#4e4e4e'}}>
+      <body className={`${archivo.className} relative min-h-svh bg-[#4e4e4e]`}>
         <Header/>
         <BackgroundImage/>
         {children}
