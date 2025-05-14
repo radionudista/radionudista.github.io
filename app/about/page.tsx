@@ -3,7 +3,7 @@ export default function About (){
 
     return(
         <main className="flex justify-center items-center sm:h-[80svh] h-[70svh] z-[100] text-[#FFFFFF]">
-            <section className="relative sm:w-[80svw] w-[90svw] sm:max-h-[80svh] max-h-[70svh] bg-[#4e4e4e] bg-[rgba(78,78,78,0)] overflow-auto">
+            <section className="relative sm:w-[80svw] w-[90svw] sm:max-h-[80svh] max-h-[70svh] bg-[#4e4e4e] bg-[rgba(78,78,78,0)] overflow-auto bg-glass">
                 <p className=" text-justify whitespace-pre-wrap sm:text-[16px] text-[3.2svw] sm:px-[0] px-[2svw]">
                 <strong>Radio Nudista®</strong> es un club social experimental para personas honestas, inclusivas, curiosas y apasionadas. Fundado en 2020, su enfoque se centra en la diversidad de opiniones, ideas y voces. Opera desde Barcelona y São Paulo y se dedica a la producción de eventos conceptuales.
                 <br/><br/>

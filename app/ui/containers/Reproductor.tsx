@@ -1,6 +1,6 @@
 'use client'
 import {useEffect, useRef, useState} from 'react'
-import { TfiControlPause, TfiControlPlay } from "react-icons/tfi";
+import { TfiControlPause, TfiControlPlay, TfiVolume } from "react-icons/tfi";
 import Loader from '@/app/ui/components/Loader'
 
 
@@ -20,7 +20,7 @@ interface Stream{
 -urlRadio: stream de audio
 -urlStream: listener informacion de stream de audio
 */
-export default function Reproductor({urlRadio,urlStream,visibility,volume}:Reproductor){
+export default function Reproductor({urlRadio,urlStream,visibility}:Reproductor){
 
     const audioRef:any = useRef(null)
     const defaultTitle:any = useRef('radionudista')
@@ -30,6 +30,10 @@ export default function Reproductor({urlRadio,urlStream,visibility,volume}:Repro
     const [radio,setRadio] = useState<Stream>({}) //Informacion reproductor {streamTitle}
     const [title,setTitle] = useState<string>('') //Titulo de la pagina
     const [load,setLoad] = useState<boolean>(false) //Estado espera por conexion con stream readio
+
+    const [isVisible, setIsVisible] = useState(false);
+    const [isInteracting, setIsInteracting] = useState(false);
+    const [volume,setVolume] = useState<number>(0.5)
 
     //Efecto unico y primero del componente
     useEffect(()=>{
@@ -102,6 +106,22 @@ export default function Reproductor({urlRadio,urlStream,visibility,volume}:Repro
 
     },[volume])
 
+    useEffect(() => {
+
+        console.log('Cambia Interacting')        
+        let timeout: NodeJS.Timeout;
+
+        if (isInteracting || isVisible) {
+            setIsVisible(true);
+            timeout = setTimeout(() => {
+                setIsVisible(false);
+                setIsInteracting(false);
+            }, 10000);
+        }
+
+        return () => clearTimeout(timeout); // Limpia el timeout anterior
+    }, [isInteracting]);
+
     //Handle play de la transmision
     const HandlePlayRadio=():void=>{
         
@@ -135,6 +155,13 @@ export default function Reproductor({urlRadio,urlStream,visibility,volume}:Repro
         
     }
 
+    const handleVolume = ({target}:any) => {
+        const v = target.value
+        const vol:number = parseFloat(v)/100;
+
+        setVolume(vol)
+        setIsInteracting(true)
+    }
 
     return (
         <div className='text-[#FFFFFF]' style={{display:visibility?'block':'none'}}>
@@ -142,17 +169,25 @@ export default function Reproductor({urlRadio,urlStream,visibility,volume}:Repro
                 <source src={stream} type="audio/mpeg"/>
                 Your browser does not support the audio element.
             </audio>
-            <section className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col items-center">
+            <section className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col items-center bg-glass">
                 {/*<Image alt="portada" src={portada} style={{height: '20svw',width:'20svw',maxHeight:'150px',maxWidth:'150px',marginBottom:'2svh'}}/>*/}
-                <p className="sm:text-[2vw] text-[5svw] font-[400] min-h-[6svw] w-[80svw] text-center mb-[1svh]">{radio.streamTitle ? radio.streamTitle : null}</p>
-                <button onClick={HandlePlayRadio}>
-                    {!play ? 
-                        <TfiControlPlay className="sm:text-[5vw] text-[15vw]" style={{display:"inline"}}/>
-                        : 
-                        (!load ? <TfiControlPause className="sm:text-[5vw] text-[15vw]" style={{display:"inline"}}/> : null)
-                    }
-                </button>
-                {load && < Loader />}
+                <p className="sm:text-[2vw] text-[5svw] font-[400] min-h-[15svw] w-[50svw] text-center mb-[1svh]">{radio.streamTitle ? radio.streamTitle : 'Canción Nudista - Gustavo & Lucho'}</p>
+                <div className='botonera flex'>
+                    {!load && <button onClick={HandlePlayRadio}>
+                        {!play ? 
+                            <TfiControlPlay className="sm:text-[3vw] text-[15vw] mx-[1vw]" style={{display:"inline"}}/>
+                            : 
+                            (!load ? <TfiControlPause className="sm:text-[3vw] text-[15vw] mx-[1vw]" style={{display:"inline"}}/> : null)
+                        }
+                    </button>}
+                    {load && < Loader />}
+                    <button>
+                        <TfiVolume className="sm:text-[3vw] text-[15vw] mx-[1vw]" style={{display:"inline"}} onClick={()=>setIsVisible(!isVisible)} />
+                    </button>
+                    {isVisible && <input className='vol-bar' type='range' min={0} max={100} step={5} value={volume != undefined ? volume*100 : 0} onChange={handleVolume}/>}
+                </div>
+                
+                
             </section>
         </div>
         

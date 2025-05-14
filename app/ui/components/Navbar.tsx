@@ -29,7 +29,7 @@ export default function Navbar({volume,setVolume}:Navbar) {
         setMovil(isMobile())
     },[])
 
-    useEffect(() => {
+    /*useEffect(() => {
 
         console.log('Cambia Interacting')        
         let timeout: NodeJS.Timeout;
@@ -43,7 +43,7 @@ export default function Navbar({volume,setVolume}:Navbar) {
         }
 
         return () => clearTimeout(timeout); // Limpia el timeout anterior
-    }, [isInteracting]);
+    }, [isInteracting]);*/
 
     const handleInteraction = () => {
         setIsInteracting(true);
@@ -58,7 +58,7 @@ export default function Navbar({volume,setVolume}:Navbar) {
     }
 
     return (
-        <nav className="flex justify-between items-center px-[10px] py-[5px] sm:h-[10svh] h-[15svh] w-full text-[#FFFFFF]">
+        <nav className="rounded-none flex justify-between items-center px-[10px] py-[5px] sm:h-[10svh] h-[15svh] w-full text-[#FFFFFF]">
             <div>
                 <Link href={'/'}>
                     <div className='relative flex items-center'>
@@ -77,16 +77,28 @@ export default function Navbar({volume,setVolume}:Navbar) {
                 </Link>
             </div>
             <div className='mr-[1.5svw] flex flex-row'>
-                {movil != undefined && pathname != '/about' && <Link href={'/about'}>
+                {movil != undefined && movil && pathname == '/' && <Link href={'/about'}>
                     <TfiInfoAlt className="sm:text-[2vw] text-[6vw]" style={{display:"inline"}} />
                 </Link>}
-                {movil != undefined && pathname == '/about' && <Link href={'/'}>
+                {movil != undefined && movil && pathname !== '/' && <Link href={'/'}>
                     <TfiBackLeft className="sm:text-[2vw] text-[6vw]" style={{display:"inline"}} />
                 </Link>}
-                {movil != undefined && !movil && <div className='relative'>
+
+                {movil != undefined && !movil && <Link href={'/about'}
+                    className='ml-[15px] mr-[15px]'
+                >
+                    Nudista
+                </Link>}
+                {movil != undefined && !movil && <Link href={'/schedule'}
+                    className='ml-[15px] mr-[15px]'
+                >
+                    Programación
+                </Link>}
+
+                {/*movil != undefined && !movil && <div className='relative'>
                     <TfiVolume className="sm:text-[2vw] text-[6vw] ml-[2vw]" style={{display:"inline"}} onClick={()=>setIsVisible(!isVisible)} />
                     {isVisible && <input className='vol-bar' type='range' min={0} max={100} step={5} value={volume != undefined ? volume*100 : 0} onChange={handleVolume}/>}
-                </div>}
+                </div>*/}
             </div>
         </nav>
     )

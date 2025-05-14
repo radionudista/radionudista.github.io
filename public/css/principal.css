@@ -14,13 +14,53 @@
 }
 
 .vol-bar{
-  appearance: slider-vertical;
+  appearance: none;
+  -webkit-appearance: none;
   position: absolute;
   top: 100%;
   left: 0%;
   width: -webkit-fill-available;
   margin-left: 2vw;
-  margin-top: 1vw;
+  margin-right: 2vw;
+  margin-top: 2vw;
+  background: none;
+}
+
+.vol-bar::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 10px;
+  border-radius: 3px;
+  margin-top: -14px;
+  background: #ffffff;
+}
+
+.vol-bar:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+.vol-bar::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: rgba(255,255,255,0.2);
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+
+.vol-bar:focus::-webkit-slider-runnable-track {
+  background: rgba(255,255,255,0.4);
+}
+
+
+.bg-glass{
+  border-radius: 3px;
+  box-shadow: 8px 8px 10px 0px rgba(0,0,0,0.2),-8px -8px 28px -25px rgba(255,255,255,0.8);/*3px 3px 15px -5px rgba(0,0,0,0.3),-5px -5px 15px -5px rgba(255,255,255,0.1);*/
+  background: rgba(78,78,78,0.1);
+  backdrop-filter: blur(5px);
+  padding: 2vh 2vw;
 }
 
 @keyframes load {
