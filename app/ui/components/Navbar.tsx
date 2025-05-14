@@ -5,16 +5,11 @@ import { TfiInfoAlt,TfiBackLeft,TfiVolume } from "react-icons/tfi";
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
 import {Dispatch,SetStateAction,useState,useEffect} from 'react'
+import { isMobile } from '../hooks/isMobile';
 
 interface Navbar{
     setVolume:Dispatch<SetStateAction<number>>
     volume?:number
-}
-
-function isMobile():boolean {
-    const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-    if (typeof navigator !== 'undefined') return regex.test(navigator.userAgent);
-    return false
 }
 
 export default function Navbar({volume,setVolume}:Navbar) {

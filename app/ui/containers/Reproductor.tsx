@@ -2,6 +2,7 @@
 import {useEffect, useRef, useState} from 'react'
 import { TfiControlPause, TfiControlPlay, TfiVolume } from "react-icons/tfi";
 import Loader from '@/app/ui/components/Loader'
+import { isMobile } from '../hooks/isMobile';
 
 
 interface Reproductor{
@@ -34,9 +35,13 @@ export default function Reproductor({urlRadio,urlStream,visibility}:Reproductor)
     const [isVisible, setIsVisible] = useState(false);
     const [isInteracting, setIsInteracting] = useState(false);
     const [volume,setVolume] = useState<number>(0.5)
+    const [movil,setMovil] = useState<boolean | undefined>(undefined)
 
     //Efecto unico y primero del componente
     useEffect(()=>{
+
+        setMovil(isMobile())
+
         //ref audio tag
         const audio = audioRef.current
 
@@ -171,19 +176,19 @@ export default function Reproductor({urlRadio,urlStream,visibility}:Reproductor)
             </audio>
             <section className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col items-center bg-glass">
                 {/*<Image alt="portada" src={portada} style={{height: '20svw',width:'20svw',maxHeight:'150px',maxWidth:'150px',marginBottom:'2svh'}}/>*/}
-                <p className="sm:text-[2vw] text-[5svw] font-[400] min-h-[15svw] w-[50svw] text-center mb-[1svh]">{radio.streamTitle ? radio.streamTitle : 'Canción Nudista - Gustavo & Lucho'}</p>
+                <p className="sm:text-[2vw] text-[5svw] font-[400] sm:min-h-[15svw] sm:w-[50svw] min-h-[25svw] w-[80svw] text-center mb-[1svh]">{radio.streamTitle ? radio.streamTitle : 'Canción Nudista - Gustavo & Lucho'}</p>
                 <div className='botonera flex'>
                     {!load && <button onClick={HandlePlayRadio}>
                         {!play ? 
-                            <TfiControlPlay className="sm:text-[3vw] text-[15vw] mx-[1vw]" style={{display:"inline"}}/>
+                            <TfiControlPlay className="sm:text-[3vw] text-[10vw] mx-[1vw]" style={{display:"inline"}}/>
                             : 
-                            (!load ? <TfiControlPause className="sm:text-[3vw] text-[15vw] mx-[1vw]" style={{display:"inline"}}/> : null)
+                            (!load ? <TfiControlPause className="sm:text-[3vw] text-[10vw] mx-[1vw]" style={{display:"inline"}}/> : null)
                         }
                     </button>}
                     {load && < Loader />}
-                    <button>
-                        <TfiVolume className="sm:text-[3vw] text-[15vw] mx-[1vw]" style={{display:"inline"}} onClick={()=>setIsVisible(!isVisible)} />
-                    </button>
+                    {movil !== undefined && !movil && <button>
+                        <TfiVolume className="sm:text-[3vw] text-[10vw] mx-[1vw]" style={{display:"inline"}} onClick={()=>setIsVisible(!isVisible)} />
+                    </button>}
                     {isVisible && <input className='vol-bar' type='range' min={0} max={100} step={5} value={volume != undefined ? volume*100 : 0} onChange={handleVolume}/>}
                 </div>
                 
