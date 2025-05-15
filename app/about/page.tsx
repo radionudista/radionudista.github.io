@@ -16,7 +16,7 @@ export default function About (){
                 <strong>Diseño de audio:</strong> Manuel Aular (@hardlinemanu.)<br/>
                 <strong>Imágenes VHS:</strong> @creativecash @maniccarts.<br/>
                 <strong>Diseño web:</strong> Felipe Laboren (@felipelabo).<br/>
-                <strong>Agradecimientos:</strong> David Jimenez, Daniel Villamizar, Clared Navarro, Lemys Kaman, Carlos Segura, Carlos Pinto y Elio Araujo.
+                <strong>Agradecimientos:</strong> David Jimenez, Daniel Villamizar, Clared Navarro, lemyskaman, Carlos Segura, Carlos Pinto y Elio Araujo.
                 </p>
             </section>
         </main>
