@@ -40,6 +40,13 @@ export default function Reproductor({urlRadio,urlStream,visibility}:Reproductor)
     //Efecto unico y primero del componente
     useEffect(()=>{
 
+        const getMetadata = async () => {
+            const res = await fetch('/api/metadata');
+            const data = await res.json();
+            console.log('Metadata:', data.title);
+        };
+        getMetadata();
+
         setMovil(isMobile())
 
         //ref audio tag
@@ -176,7 +183,7 @@ export default function Reproductor({urlRadio,urlStream,visibility}:Reproductor)
             </audio>
             <section className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col items-center bg-glass">
                 {/*<Image alt="portada" src={portada} style={{height: '20svw',width:'20svw',maxHeight:'150px',maxWidth:'150px',marginBottom:'2svh'}}/>*/}
-                <p className="sm:text-[2vw] text-[5svw] font-[400] sm:min-h-[15svw] sm:w-[50svw] min-h-[25svw] w-[80svw] text-center mb-[1svh]">{radio.streamTitle ? radio.streamTitle : 'Canción Nudista - Gustavo & Lucho'}</p>
+                {/*<p className="sm:text-[2vw] text-[5svw] font-[400] sm:min-h-[15svw] sm:w-[50svw] min-h-[25svw] w-[80svw] text-center mb-[1svh]">{radio.streamTitle ? radio.streamTitle : 'Canción Nudista - Gustavo & Lucho'}</p>*/}
                 <div className='botonera flex'>
                     {!load && <button onClick={HandlePlayRadio}>
                         {!play ? 
