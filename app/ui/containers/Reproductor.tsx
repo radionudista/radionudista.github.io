@@ -52,6 +52,7 @@ export default function Reproductor({urlRadio,urlStream,visibility}:Reproductor)
             const res = await fetch('/api/metadata');
             const data = await res.json();
 
+            console.log(data)
             if(streamTitle.current != data.title){
                 setRadio(p=>({...p,streamTitle:data.title}))
                 setTitle(data.title)
