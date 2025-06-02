@@ -5,7 +5,6 @@ import https from 'https';
 
 export async function GET(req: NextRequest) {
   const streamUrl = 'https://servidor30.brlogic.com:7024/live';
-  console.log('function GET')
 
   return new Promise((resolve) => {
     const options = {
@@ -27,8 +26,6 @@ export async function GET(req: NextRequest) {
       res.on('data', (chunk) => {
         audioData = Buffer.concat([audioData, chunk]);
 
-        console.log('On data')
-
         if (audioData.length >= icyMetaInt + 1) {
           const metadataLength = audioData[icyMetaInt] * 16;
           const metadata = audioData.slice(icyMetaInt + 1, icyMetaInt + 1 + metadataLength).toString();
@@ -47,3 +44,21 @@ export async function GET(req: NextRequest) {
     });
   });
 }
+
+/*// app/api/metadata/route.ts
+import { NextResponse } from 'next/server';
+import { getCachedMetadata } from '@/lib/metadataCache';
+import { startMetadataPolling } from '@/lib/metadataPoller';
+
+let hasStartedPolling = false;
+
+export async function GET() {
+  if (!hasStartedPolling) {
+    startMetadataPolling();
+    hasStartedPolling = true;
+  }
+
+  const title = getCachedMetadata();
+  return NextResponse.json({ title });
+}
+*/

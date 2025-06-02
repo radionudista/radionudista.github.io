@@ -25,6 +25,7 @@ export default function Reproductor({urlRadio,urlStream,visibility}:Reproductor)
 
     const audioRef:any = useRef(null)
     const defaultTitle:any = useRef('radionudista')
+    const streamTitle:any = useRef('');
 
     const [stream,setStream] = useState<string>(''); //Stream de audio
     const [play,setPlay] = useState<boolean>(false) //Estado de reproduccion (PLAY/PAUSE)
@@ -40,12 +41,24 @@ export default function Reproductor({urlRadio,urlStream,visibility}:Reproductor)
     //Efecto unico y primero del componente
     useEffect(()=>{
 
-        const getMetadata = async () => {
+        /*const getMetadata = async () => {
             const res = await fetch('/api/metadata');
             const data = await res.json();
             console.log('Metadata:', data.title);
         };
-        getMetadata();
+        getMetadata();*/
+
+        const interval = setInterval(async () => {
+            const res = await fetch('/api/metadata');
+            const data = await res.json();
+
+            if(streamTitle.current != data.title){
+                setRadio(p=>({...p,streamTitle:data.title}))
+                setTitle(data.title)
+                console.log('Metadata:',data.title);
+            }
+
+        }, 5000); // cada 10 segundos
 
         setMovil(isMobile())
 
@@ -82,7 +95,7 @@ export default function Reproductor({urlRadio,urlStream,visibility}:Reproductor)
             if(eventSource) eventSource.close();
             audio.removeEventListener('error',handleError);
             audio.removeEventListener('playing',()=>setLoad(false));
-
+            clearInterval(interval);
         };
         
         
@@ -90,6 +103,7 @@ export default function Reproductor({urlRadio,urlStream,visibility}:Reproductor)
 
     //Efecto cambio de titulo
     useEffect(()=>{
+        streamTitle.current = title //actualizo referencia para evitar actualizacion
         if(play){
         console.log('cambia title:',title)
         document.title = `@radionudista | ${title}`
@@ -183,7 +197,7 @@ export default function Reproductor({urlRadio,urlStream,visibility}:Reproductor)
             </audio>
             <section className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col items-center bg-glass">
                 {/*<Image alt="portada" src={portada} style={{height: '20svw',width:'20svw',maxHeight:'150px',maxWidth:'150px',marginBottom:'2svh'}}/>*/}
-                {/*<p className="sm:text-[2vw] text-[5svw] font-[400] sm:min-h-[15svw] sm:w-[50svw] min-h-[25svw] w-[80svw] text-center mb-[1svh]">{radio.streamTitle ? radio.streamTitle : 'Canción Nudista - Gustavo & Lucho'}</p>*/}
+                {<p className="sm:text-[2vw] text-[5svw] font-[400] sm:min-h-[15svw] sm:w-[50svw] min-h-[25svw] w-[80svw] text-center mb-[1svh]">{radio.streamTitle ? radio.streamTitle : 'Reproductor'}</p>}
                 <div className='botonera flex'>
                     {!load && <button onClick={HandlePlayRadio}>
                         {!play ? 

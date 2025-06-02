@@ -5,18 +5,26 @@ export default function About (){
         <main className="flex justify-center items-center sm:h-[80svh] h-[70svh] z-[100] text-[#FFFFFF]">
             <section className="relative sm:w-[80svw] w-[90svw] sm:max-h-[80svh] max-h-[70svh] bg-[#4e4e4e] bg-[rgba(78,78,78,0)] overflow-auto bg-glass">
                 <p className=" text-justify whitespace-pre-wrap sm:text-[16px] text-[3.2svw] sm:px-[0] px-[2svw]">
-                <strong>Radio Nudista®</strong> es un club social experimental para personas honestas, inclusivas, curiosas y apasionadas. Fundado en 2020, su enfoque se centra en la diversidad de opiniones, ideas y voces. Opera desde Barcelona y São Paulo y se dedica a la producción de eventos conceptuales.
+                <strong>Radio Nudista®</strong> es un club social experimental para personas honestas, curiosas, apasionadas e inclusivas.
                 <br/><br/>
-                Además de ser un club social, también funciona como una radio online y un laboratorio para artistas independientes. En este espacio, se promueve un entorno seguro para compartir proyectos, experiencias y nudes.
+                Fundado en 2020, nació con una premisa simple pero poderosa: crear un espacio donde las voces diversas puedan encontrarse sin filtros. Aquí, la diferencia no es una barrera, sino un puente. La honestidad, un valor. Y la curiosidad, una brújula.
                 <br/><br/>
-                Es una comunidad colaborativa, siempre abierta a nuevas propuestas. Si deseas difundir tu obra o formar parte de la programación, no dudes en enviar tu información a correonudista@gmail.com
+                Desde Barcelona y São Paulo, radionudista opera como una <strong>radio online, un club social y un laboratorio creativo</strong> para artistas independientes. Es un lugar para quienes buscan formas nuevas de habitar el sonido, la conversación, el deseo y la comunidad.
+                <br/><br/>
+                Además de nuestra emisión continua las 24 horas, organizamos eventos conceptuales, fiestas, lanzamientos, encuentros y NakedTalks: espacios de micrófono abierto que suceden cada jueves en redes, donde hablamos sin máscaras en un ambiente íntimo, sin grabaciones, sin espectáculo. Sólo presencia.
+                <br/><br/>
+                En radionudista, la experimentación no es sólo estética: es política. Abrimos espacio para el error, la duda, el cuerpo, el ruido, el saber popular y lo inclasificable. Aquí se comparten proyectos, experiencias, ideas… y nudes. Aquí no se juzga: se escucha.
+                <br/><br/>
+                Somos una comunidad viva, colaborativa y siempre abierta a nuevas propuestas. Si quieres difundir tu obra, proponer un programa o ser parte de esta frecuencia compartida, escríbenos a correonudista@gmail.com
                 <br/><br/><br/>
-                <strong>Curaduría musical:</strong> Lucho Milazzo (@luchomy) y Gustavo Perez (@gustavodesnudo).<br/> 
-                <strong>Voces:</strong> Diana Hung, Gustavo Perez, Lucho Milazzo, Samira Moura y Gabriel Rodrigues.<br/>
-                <strong>Diseño de audio:</strong> Manuel Aular (@hardlinemanu.)<br/>
-                <strong>Imágenes VHS:</strong> @creativecash @maniccarts.<br/>
+                <strong>Curaduría musical:</strong> Gustavo Perez (@gustavodesnudo) y Lucho Milazzo (@luchomy).<br/> 
                 <strong>Diseño web:</strong> Felipe Laboren (@felipelabo).<br/>
-                <strong>Agradecimientos:</strong> David Jimenez, Daniel Villamizar, Clared Navarro, Lemys Kaman, Carlos Segura, Carlos Pinto y Elio Araujo.
+                <strong>Diseño de audio:</strong> Manuel Aular (@hardlinemanu).<br/>
+                <strong>Visuales:</strong> Andres Ramírez (@Gachapon3000).<br/>
+                <strong>Voiceovers:</strong> Diana Hung, Gustavo Perez, Lucho Milazzo, Samira Moura y Gabriel Rodrigues, Adrian Sanchez, Julio Quintana y Alberto Flores Solano. <br/>
+                <strong>Imágenes VHS:</strong> @creativecash @maniccarts.<br/>
+                Esta radio suena gracias a Wendys Rodriguez, Daniel Salas, Leonardo Dávila, Carlos Eduardo Parra, Nelson Parra, David Jimenez, Daniel Villamizar, Edgar Cabrera, Clared Navarro, Felipe Laboren, Lemys Kaman, Carlos Pinto, Isaac Varzim y Elio Araujo.
+                <br/><br/>
                 </p>
             </section>
         </main>
