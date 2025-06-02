@@ -1,4 +1,4 @@
-// app/api/metadata/route.ts
+/*// app/api/metadata/route.ts
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import https from 'https';
@@ -43,7 +43,7 @@ export async function GET(req: NextRequest) {
       resolve(NextResponse.json({ error: 'Failed to fetch stream' }, { status: 500 }));
     });
   });
-}
+}*/
 
 /*// app/api/metadata/route.ts
 import { NextResponse } from 'next/server';
@@ -62,3 +62,52 @@ export async function GET() {
   return NextResponse.json({ title });
 }
 */
+
+// app/api/metadata/route.ts
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import https from 'https';
+
+export async function GET(_req: NextRequest): Promise<Response> {
+  const streamUrl = 'https://servidor30.brlogic.com:7024/live';
+
+  const metadata = await new Promise<string | null>((resolve, reject) => {
+    const options = {
+      headers: { 'Icy-MetaData': '1' },
+    };
+
+    const request = https.get(streamUrl, options, (res) => {
+      const icyMetaInt = parseInt(res.headers['icy-metaint'] as string);
+      if (!icyMetaInt) {
+        return resolve(null);
+      }
+
+      let audioData = Buffer.alloc(0);
+
+      res.on('data', (chunk) => {
+        audioData = Buffer.concat([audioData, chunk]);
+
+        if (audioData.length >= icyMetaInt + 1) {
+          const metadataLength = audioData[icyMetaInt] * 16;
+          const metadata = audioData.slice(icyMetaInt + 1, icyMetaInt + 1 + metadataLength).toString();
+          const matches = /StreamTitle='([^']*)'/.exec(metadata);
+          const streamTitle = matches?.[1] || null;
+
+          res.destroy();
+          resolve(streamTitle);
+        }
+      });
+    });
+
+    request.on('error', () => {
+      resolve(null); // o reject si prefieres manejarlo con try/catch
+    });
+  });
+
+  if (!metadata) {
+    return NextResponse.json({ error: 'Failed to fetch stream' }, { status: 500 });
+  }
+
+  return NextResponse.json({ title: metadata });
+}
+
