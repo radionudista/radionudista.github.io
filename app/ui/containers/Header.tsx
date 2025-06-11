@@ -8,7 +8,11 @@ import Reproductor from '@/app/ui/containers/Reproductor';
 import Navbar from '@/app/ui/components/Navbar'
 import {usePathname} from 'next/navigation'
 import {useState} from 'react'
-
+//import Player from '@/app/ui/components/Player'
+import dynamic from 'next/dynamic';
+const Player = dynamic(() => import('@/app/ui/components/Player'), {
+  ssr: false,
+});
 export default function Header() {
 
     const [volume,setVolume] = useState<number>(0.5)
@@ -21,11 +25,12 @@ export default function Header() {
     return(
         <>
             <Navbar setVolume={setVolume} volume={volume}/>
-            <Reproductor 
+            <Player/>
+            {/*<Reproductor 
                 urlRadio={urlRadio.current} 
                 visibility={pathname == '/'}
                 volume={volume}
-            />
+            />*/}
         </>
     )
 }
